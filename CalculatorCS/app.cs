@@ -5,13 +5,13 @@ namespace HelloWorld {
     // Main Method
     public static void Main (string[] args) {
       //Array of possible operations in the calculator
-      string[] operations = {"Add", "Subtract", "Multiply", "Divide", "Cube", "Square Root"};
+      string[] operations = {"Add", "Subtract", "Multiply", "Divide", "Square", "Cube", "Exponent", "Square Root"};
       //Grabs the operator from the user
       Console.WriteLine("What would you like to do? " + string.Join(", ", operations));
       string operate = Console.ReadLine();
       //Checks to see if operate variable is equal to two operations.
       //In these two cases, the second number does not matter, so it asks you for a single number.
-      if(operate == "Cube" | operate == "Square Root") {
+      if(operate == "Cube" | operate == "Square Root" | operate == "Square") {
         //Could also use Convert.ToDouble(Console.ReadLine()); in place of double.Parse.
         Console.WriteLine("What would you like your number to be?");
         double x = double.Parse(Console.ReadLine());
@@ -41,6 +41,8 @@ namespace HelloWorld {
         Console.WriteLine("Your cubed number is " + Cube(x));
       } else if(operate == "Square Root") {
         Console.WriteLine("The square root of " + x + " is " + SquareRoot(x));
+      } else if(operate == "Exponent") {
+        Console.WriteLine(x + " to the power of " + y + " is " + Exponent(x, y));
       } else {
         Console.WriteLine("That is not a valid operator.");
       }
@@ -59,6 +61,16 @@ namespace HelloWorld {
       } else {
         return result;
       }
+    }
+
+    public static double Exponent(double baseNum, double power) {
+      double result = 1;
+
+      for(int i = 0; i < power; i++) {
+        result = result * baseNum;
+      }
+
+      return result;
     }
   }
 }
